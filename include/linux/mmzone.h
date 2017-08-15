@@ -156,6 +156,7 @@ enum zone_stat_item {
 	NR_ION_PAGES,
 	NR_ION_POOL_PAGES,
 	NR_ION_CMA_PAGES,
+	NR_SWAPCACHE,
 	NR_VM_ZONE_STAT_ITEMS };
 
 /*

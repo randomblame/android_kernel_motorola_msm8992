@@ -245,6 +245,10 @@ static void msm_restart_prepare(const char *cmd)
 			need_warm_reset = true;
 	}
 
+#ifdef CONFIG_MSM_PRESERVE_MEM
+	need_warm_reset = true;
+#endif
+
 	/* Hard reset the PMIC unless memory contents must be maintained. */
 	if (need_warm_reset || in_panic) {
 		qpnp_pon_system_pwr_off(PON_POWER_OFF_WARM_RESET);
@@ -307,6 +311,7 @@ static void msm_restart_prepare(const char *cmd)
 			 /* force cold reboot */
 			qpnp_pon_system_pwr_off(PON_POWER_OFF_HARD_RESET);
 		} else {
+			qpnp_pon_set_restart_reason(PON_RESTART_REASON_UNKNOWN);
 			__raw_writel(0x77665501, restart_reason);
 		}
 	} else if (in_panic == 1) {
