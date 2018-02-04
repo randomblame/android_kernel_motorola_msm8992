@@ -208,12 +208,6 @@ struct fscrypt_policy {
 /* Structure that userspace passes to the kernel keyring */
 #define FS_MAX_KEY_SIZE			64
 
-struct fscrypt_key {
-	__u32 mode;
-	__u8 raw[FS_MAX_KEY_SIZE];
-	__u32 size;
-};
-
 /*
  * Inode flags (FS_IOC_GETFLAGS / FS_IOC_SETFLAGS)
  */
